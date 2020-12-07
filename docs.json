@@ -24,25 +24,21 @@
       },
       "responses": {
         "200": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": null
+          "description": "ok",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "_id": "string,"
+                }
+              }
             }
           }
         }
       }
     },
-    "_id": {
-      "0": "s",
-      "1": "t",
-      "2": "r",
-      "3": "i",
-      "4": "n",
-      "5": "g",
-      "6": ","
-    },
-    "username": {
+    ".             username": {
       "0": "s",
       "1": "t",
       "2": "r",
