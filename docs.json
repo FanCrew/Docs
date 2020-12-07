@@ -18,17 +18,34 @@
     "Services/*.js"
   ],
   "paths": {
-    "/users": {
+    "/user": {
       "get": {
-        "description": "Get Current User"
-      },
-      "responses": {
-        "200": {
-          "description": "ok",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": null
+        "description": "Get Current User",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/:id": {
+      "get": {
+        "description": "Get Single User",
+        "response": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
               }
             }
           }
