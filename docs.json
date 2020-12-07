@@ -20,6 +20,7 @@
   "paths": {
     "/users": {
       "get": {
+        "tags": "User",
         "description": "Get Current User"
       },
       "responses": {
@@ -28,25 +29,34 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "_id": "string,"
-                }
+                "$ref": null
               }
             }
           }
         }
       }
-    },
-    ".             username": {
-      "0": "s",
-      "1": "t",
-      "2": "r",
-      "3": "i",
-      "4": "n",
-      "5": "g"
     }
   },
-  "components": {},
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
   "tags": []
 }
