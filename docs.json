@@ -38,6 +38,17 @@
     "/user/:id": {
       "get": {
         "description": "Get Single User",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The user id"
+          }
+        ],
         "response": {
           "200": {
             "description": "ok",
