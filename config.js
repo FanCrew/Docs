@@ -5,5 +5,5 @@ module.exports = {
     title: 'FanCrew - API',
     version: '1.0.0'
   },
-  apis: ['/Routes/*.js', 'Models/*.js', 'Controllers/*.js', 'Services/*.js']
+  apis: ['Routes/*.js', 'Models/*.js', 'Controllers/*.js', 'Services/*.js']
 };

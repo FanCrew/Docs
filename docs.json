@@ -6,12 +6,45 @@
     "version": "1.0.0"
   },
   "apis": [
-    "/Routes/*.js",
+    "Routes/*.js",
     "Models/*.js",
     "Controllers/*.js",
     "Services/*.js"
   ],
-  "paths": {},
+  "paths": {
+    "/users": {
+      "get": {
+        "description": "Get Current User"
+      },
+      "responses": {
+        "200": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "properties": null
+            }
+          }
+        }
+      }
+    },
+    "_id": {
+      "0": "s",
+      "1": "t",
+      "2": "r",
+      "3": "i",
+      "4": "n",
+      "5": "g",
+      "6": ","
+    },
+    "username": {
+      "0": "s",
+      "1": "t",
+      "2": "r",
+      "3": "i",
+      "4": "n",
+      "5": "g"
+    }
+  },
   "components": {},
   "tags": []
 }
