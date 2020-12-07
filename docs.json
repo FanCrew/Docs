@@ -1,4 +1,6 @@
 {
+  "openapi": "3.0.0",
+  "host": "https://fantasy.crustplay.com",
   "info": {
     "title": "FanCrew - API",
     "version": "1.0.0"
@@ -9,11 +11,7 @@
     "Controllers/*.js",
     "Services/*.js"
   ],
-  "swagger": "2.0",
   "paths": {},
-  "definitions": {},
-  "responses": {},
-  "parameters": {},
-  "securityDefinitions": {},
+  "components": {},
   "tags": []
 }
