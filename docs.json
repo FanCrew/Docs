@@ -1,0 +1,19 @@
+{
+  "info": {
+    "title": "FanCrew - API",
+    "version": "1.0.0"
+  },
+  "apis": [
+    "/Routes/*.js",
+    "Models/*.js",
+    "Controllers/*.js",
+    "Services/*.js"
+  ],
+  "swagger": "2.0",
+  "paths": {},
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}

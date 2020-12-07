@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@latest/swagger-ui.css">
+  <script src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-standalone-preset.js"></script>
+  <script src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-bundle.js" charset="UTF-8"></script>
+  <title>FanCrew - API</title>
+  <div id="root"></div>
+</head>
+
+<body>
+  <script>
+    const ui = SwaggerUIBundle({
+      url: "/docs.json",
+      dom_id: '#root',
+      presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIBundle.SwaggerUIStandalonePreset
+    ]
+    });
+    window.ui = ui;
+  </script>
+</body>
+
+</html>
