@@ -80,6 +80,73 @@
           },
           "username": {
             "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "image": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          },
+          "verified": {
+            "type": "boolean"
+          },
+          "balance": {
+            "type": "number"
+          },
+          "notifications": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "viewed": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "date"
+              }
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "contests": {
+                "type": "number"
+              },
+              "matches": {
+                "type": "number"
+              },
+              "earnings": {
+                "type": "number"
+              }
+            }
+          },
+          "staff": {
+            "type": "boolean"
+          },
+          "manager": {
+            "type": "boolean"
+          },
+          "admin": {
+            "type": "boolean"
           }
         }
       }
