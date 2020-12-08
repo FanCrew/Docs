@@ -18,6 +18,29 @@
     "Services/*.js"
   ],
   "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get Current User",
+        "security": [
+          "Bearer"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user/{id}": {
       "get": {
         "description": "Get Single User",
@@ -255,6 +278,13 @@
             "type": "boolean"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   },
