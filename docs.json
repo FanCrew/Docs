@@ -66,6 +66,123 @@
   },
   "components": {
     "schemas": {
+      "Contest": {
+        "match": {
+          "type": "string"
+        },
+        "prize_pool": {
+          "type": "number"
+        },
+        "fee": {
+          "type": "number"
+        },
+        "max_spots": {
+          "type": "number"
+        },
+        "min_spots": {
+          "type": "number"
+        },
+        "max_entries": {
+          "type": "number"
+        },
+        "distributions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "rank": {
+                "type": "string"
+              },
+              "prize": {
+                "type": "number"
+              },
+              "isRange": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Team"
+          }
+        }
+      },
+      "Player": {
+        "name": {
+          "type": "string"
+        },
+        "game": {
+          "type": "number"
+        },
+        "team_name": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "points": {
+          "type": "number"
+        }
+      },
+      "Team": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string"
+          },
+          "match": {
+            "type": "string"
+          },
+          "contest": {
+            "type": "string"
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "player": {
+                  "type": "string"
+                },
+                "points": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "captain": {
+            "type": "string"
+          },
+          "vice_captain": {
+            "type": "string"
+          },
+          "points": {
+            "type": "number"
+          },
+          "rank": {
+            "type": "number"
+          },
+          "prize": {
+            "type": "number"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "User": {
         "type": "object",
         "properties": {
@@ -113,17 +230,17 @@
               },
               "createdAt": {
                 "type": "string",
-                "format": "date"
+                "format": "date-time"
               }
             }
           },
           "createdAt": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "updatedAt": {
             "type": "string",
-            "format": "date"
+            "format": "date-time"
           },
           "meta": {
             "type": "object",
