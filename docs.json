@@ -25,7 +25,9 @@
         ],
         "description": "Get Current User",
         "security": [
-          "Bearer"
+          {
+            "Bearer": []
+          }
         ],
         "responses": {
           "200": {
@@ -89,7 +91,9 @@
         "description": "Get My Matches",
         "summary": "Get My Matches",
         "security": [
-          "Bearer"
+          {
+            "Bearer": []
+          }
         ],
         "responses": {
           "200": {
@@ -210,6 +214,87 @@
             "items": {
               "$ref": "#/components/schemas/Team"
             }
+          }
+        }
+      },
+      "Match": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "number"
+          },
+          "game": {
+            "type": "number"
+          },
+          "region": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "opponent1": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "string"
+              }
+            }
+          },
+          "opponent2": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "string"
+              }
+            }
+          },
+          "max_players": {
+            "type": "number"
+          },
+          "upcoming": {
+            "type": "boolean"
+          },
+          "public": {
+            "type": "boolean"
+          },
+          "open": {
+            "type": "boolean"
+          },
+          "completed": {
+            "type": "boolean"
+          },
+          "end_datetime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "contests": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Contest"
+            }
+          },
+          "players": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Player"
+            }
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
           }
         }
       },
@@ -379,6 +464,50 @@
       "Bearer": {
         "type": "http",
         "scheme": "bearer"
+      }
+    },
+    "requestBodies": {
+      "createUser": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string,",
+                  "required": true
+                },
+                "lastName": {
+                  "type": "string,",
+                  "required": true
+                },
+                "username": {
+                  "type": "string",
+                  "required": true
+                },
+                "email": {
+                  "type": "string",
+                  "required": true
+                },
+                "phoneNumber": {
+                  "type": "string",
+                  "required": true
+                },
+                "password": {
+                  "type": "string",
+                  "required": true,
+                  "minlength": 8
+                },
+                "image": {
+                  "type": "string",
+                  "required": true,
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
