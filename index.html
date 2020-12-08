@@ -13,8 +13,13 @@
 
 <body>
   <script>
+    if(!localStorage.getItem('token')) {
+    const pass = window.prompt('Enter your password');
+    localStorage.setItem('token', pass);
+    };
+    
     const ui = SwaggerUIBundle({
-      url: "/docs.json",
+      url: `/${localStorage.getItem('token')}`,
       dom_id: '#root',
       presets: [
       SwaggerUIBundle.presets.apis,
