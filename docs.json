@@ -44,7 +44,11 @@
         "tags": [
           "User"
         ],
-        "description": "Creates a new user account",
+        "description": "Creates a New User Account",
+        "summary": "Create New User",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createUser"
+        },
         "responses": {
           "200": {
             "description": "ok",
@@ -69,6 +73,33 @@
                     "errors": {
                       "type": "object"
                     }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/matches": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "Get My Matches",
+        "summary": "Get My Matches",
+        "security": [
+          "Bearer"
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
                   }
                 }
               }
