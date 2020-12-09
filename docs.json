@@ -19,6 +19,160 @@
     "Docs/*.js"
   ],
   "paths": {
+    "/matches/{matchId}/teams": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "description": "Get My Teams",
+        "summary": "Get My Teams",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "content": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Team"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Team"
+        ],
+        "description": "Create Team",
+        "summary": "Create Team",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createTeam"
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/teams/{teamId}": {
+      "get": {
+        "tags": [
+          "Team"
+        ],
+        "description": "Get Team by Id",
+        "summary": "Get Team by Id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/team"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Team"
+        ],
+        "description": "Update Team",
+        "summary": "Update Team",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/team"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createTeam"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Team"
+        ],
+        "description": "Delete Team by Id",
+        "summary": "Delete Team by Id",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/team"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "": {},
     "/user": {
       "get": {
         "tags": [
@@ -148,7 +302,6 @@
         }
       }
     },
-    "": {},
     "/user/{id}": {
       "get": {
         "tags": [
@@ -786,6 +939,28 @@
               }
             }
           }
+        }
+      }
+    },
+    "parameters": {
+      "match": {
+        "in": "path",
+        "name": "matchId",
+        "required": true,
+        "description": "The match id",
+        "schema": {
+          "type": "string",
+          "default": "5fba03763917ea4637e4fe6e"
+        }
+      },
+      "team": {
+        "in": "path",
+        "name": "teamId",
+        "required": true,
+        "description": "The team id",
+        "schema": {
+          "type": "string",
+          "default": "5fba68b3196b4d615e700cec"
         }
       }
     }
