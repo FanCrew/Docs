@@ -9,5 +9,5 @@ module.exports = {
     url: 'https://fantasy.crustplay.com',
     description: 'Development Server'
   }],
-  apis: ['Routes/*.js', 'Models/*.js', 'Controllers/*.js', 'Services/*.js']
+  apis: ['Routes/*.js', 'Models/*.js', 'Controllers/*.js', 'Services/*.js', 'Docs/*.js']
 };

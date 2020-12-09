@@ -15,7 +15,8 @@
     "Routes/*.js",
     "Models/*.js",
     "Controllers/*.js",
-    "Services/*.js"
+    "Services/*.js",
+    "Docs/*.js"
   ],
   "paths": {
     "/user": {
@@ -71,6 +72,9 @@
         }
       },
       "patch": {
+        "tags": [
+          "User"
+        ],
         "description": "Update User",
         "summary": "Update User",
         "security": [
@@ -79,7 +83,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/updateProfile"
+          "$ref": "#/components/requestBodies/updateUser"
         },
         "responses": {
           "200": {
@@ -155,6 +159,9 @@
                 }
               }
             }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
           }
         }
       }
@@ -166,6 +173,9 @@
         ],
         "summary": "Login to account",
         "description": "Login to account",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/userLogin"
+        },
         "responses": {
           "200": {
             "content": {
@@ -180,6 +190,61 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Incorrect Password"
+          },
+          "404": {
+            "description": "User Not Found"
+          }
+        }
+      }
+    },
+    "/user/changepassword": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Change Password",
+        "summary": "Change Password",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/changePass"
+        }
+      }
+    },
+    "/user/forgotpass": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Forgot Password",
+        "summary": "Forgot Password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "phoneNumber"
+                ],
+                "properties": {
+                  "phoneNumber": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          },
+          "404": {
+            "description": "User Not Found"
           }
         }
       }
@@ -514,6 +579,9 @@
                 "phoneNumber": {
                   "type": "string"
                 },
+                "region": {
+                  "type": "string"
+                },
                 "password": {
                   "type": "string",
                   "minLength": 8
@@ -527,26 +595,179 @@
           }
         }
       },
-      "required": true,
-      "content": {
-        "application/json": {
-          "schema": {
-            "type": "object",
-            "properties": {
-              "email": {
-                "type": "string"
+      "userLogin": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
               },
-              "username": {
-                "type": "string"
-              },
-              "password": {
-                "type": "string"
+              "required": [
+                "email",
+                "password"
+              ]
+            }
+          }
+        }
+      },
+      "updateUser": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "type": "string"
+                },
+                "lastName": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "image": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
-            },
-            "required": [
-              "email",
-              "password"
-            ]
+            }
+          }
+        }
+      },
+      "changePass": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "oldpass",
+                "newpass"
+              ],
+              "properties": {
+                "oldpass": {
+                  "type": "string"
+                },
+                "newpass": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "400": {
+        "description": "Bad Request",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Authorization is required",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Unauthorised",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Not Found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "422": {
+        "description": "ValidationError",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
