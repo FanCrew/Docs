@@ -21,6 +21,8 @@
     const ui = SwaggerUIBundle({
       url: `/${localStorage.getItem('token')}`,
       dom_id: '#root',
+      persistAuthorization: true,
+      syntaxHighlight: true,
       presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIBundle.SwaggerUIStandalonePreset
