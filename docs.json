@@ -731,7 +731,10 @@
                   "type": "string"
                 },
                 "players": {
-                  "type": "array"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
