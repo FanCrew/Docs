@@ -19,6 +19,470 @@
     "Docs/*.js"
   ],
   "paths": {
+    "/matches": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "description": "Get All Matches",
+        "summary": "Get All Matches",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "Max no of matches to return",
+            "schema": {
+              "type": "number",
+              "maximum": 20,
+              "minimum": 1,
+              "default": 20
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Offset",
+            "default": 0
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Match"
+        ],
+        "description": "Create Match",
+        "summary": "Create Match",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createMatch"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/{matchId}": {
+      "get": {
+        "tags": [
+          "Match"
+        ],
+        "description": "Get Match by Id",
+        "summary": "Get Match by Id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Match"
+        ],
+        "description": "Update Match",
+        "summary": "Update Match",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/updateMatch"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Match"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Match"
+        ],
+        "description": "Delete Match",
+        "summary": "Delete Match",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/contests": {
+      "get": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Get All Contests",
+        "summary": "Get All Contests",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Create Contests",
+        "summary": "Create Contests",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createContest"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/contests/{contestId}": {
+      "get": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Get Contest by Id",
+        "summary": "Get Contest by Id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contest"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Update Contest",
+        "summary": "Update Contest",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/createContest"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contest"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/contests/{contestId}/distribute": {
+      "post": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Distribute Prize",
+        "summary": "Distribute Prize",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/contests/{contestId}/finalize": {
+      "post": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Finalize Contest",
+        "summary": "Finalize Contest",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/players": {
+      "get": {
+        "tags": [
+          "Player/Match"
+        ],
+        "description": "Get All Players",
+        "summary": "Get All Players",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Player/Match"
+        ],
+        "description": "Add Players",
+        "summary": "Add Players",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          }
+        ],
+        "requestBody": {
+          "$ref": "#/components/requestBodies/addPlayer"
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Player"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/matches/{matchId}/players/{playerId}": {
+      "patch": {
+        "tags": [
+          "Player/Match"
+        ],
+        "description": "Update Players",
+        "summary": "Update Players",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/player"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/player"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Player"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Player/Match"
+        ],
+        "description": "Delete Player",
+        "summary": "Delete Player",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/player"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
     "/matches/{matchId}/teams": {
       "get": {
         "tags": [
@@ -179,6 +643,7 @@
           "User"
         ],
         "description": "Get Current User",
+        "summary": "Get Current User",
         "security": [
           {
             "Bearer": []
@@ -307,7 +772,8 @@
         "tags": [
           "User"
         ],
-        "description": "Get Single User",
+        "description": "Get User By Id",
+        "summary": "Get User By Id",
         "parameters": [
           {
             "in": "path",
@@ -718,6 +1184,98 @@
       }
     },
     "requestBodies": {
+      "createMatch": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object"
+            },
+            "required": [
+              "name",
+              "type",
+              "game",
+              "region",
+              "max_players",
+              "end_datetime"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "number"
+              },
+              "game": {
+                "type": "number"
+              },
+              "region": {
+                "type": "string"
+              },
+              "max_players": {
+                "type": "number"
+              },
+              "end_datetime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "banner": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        }
+      },
+      "updateMatch": {
+        "required": true,
+        "content": {
+          "multipart/form-data": {
+            "schema": {
+              "type": "object"
+            },
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "number"
+              },
+              "game": {
+                "type": "number"
+              },
+              "region": {
+                "type": "string"
+              },
+              "max_players": {
+                "type": "number"
+              },
+              "end_datetime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "banner": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        }
+      },
+      "addPlayer": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "player": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
       "createTeam": {
         "content": {
           "application/json": {
@@ -984,6 +1542,26 @@
         "schema": {
           "type": "string",
           "default": "5fba68b3196b4d615e700cec"
+        }
+      },
+      "contest": {
+        "in": "path",
+        "name": "contestId",
+        "required": true,
+        "description": "The contest id",
+        "schema": {
+          "type": "string",
+          "default": "5fba0cdd23df2448b8bdf369"
+        }
+      },
+      "player": {
+        "in": "path",
+        "name": "playerId",
+        "required": true,
+        "description": "The player id",
+        "schema": {
+          "type": "string",
+          "default": "5fba05f0f6bac046d456914e"
         }
       }
     }
