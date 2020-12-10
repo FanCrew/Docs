@@ -51,7 +51,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Match"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Match"
+                  }
                 }
               }
             }
@@ -439,7 +442,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/player"
+                "$ref": "#/components/schemas/Player"
               }
             }
           }
@@ -1189,39 +1192,39 @@
         "content": {
           "multipart/form-data": {
             "schema": {
-              "type": "object"
-            },
-            "required": [
-              "name",
-              "type",
-              "game",
-              "region",
-              "max_players",
-              "end_datetime"
-            ],
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "type": {
-                "type": "number"
-              },
-              "game": {
-                "type": "number"
-              },
-              "region": {
-                "type": "string"
-              },
-              "max_players": {
-                "type": "number"
-              },
-              "end_datetime": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "banner": {
-                "type": "string",
-                "format": "binary"
+              "type": "object",
+              "required": [
+                "name",
+                "type",
+                "game",
+                "region",
+                "max_players",
+                "end_datetime"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "number"
+                },
+                "game": {
+                  "type": "number"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "max_players": {
+                  "type": "number"
+                },
+                "end_datetime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "banner": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
             }
           }
@@ -1232,31 +1235,31 @@
         "content": {
           "multipart/form-data": {
             "schema": {
-              "type": "object"
-            },
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "type": {
-                "type": "number"
-              },
-              "game": {
-                "type": "number"
-              },
-              "region": {
-                "type": "string"
-              },
-              "max_players": {
-                "type": "number"
-              },
-              "end_datetime": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "banner": {
-                "type": "string",
-                "format": "binary"
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "number"
+                },
+                "game": {
+                  "type": "number"
+                },
+                "region": {
+                  "type": "string"
+                },
+                "max_players": {
+                  "type": "number"
+                },
+                "end_datetime": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "banner": {
+                  "type": "string",
+                  "format": "binary"
+                }
               }
             }
           }
