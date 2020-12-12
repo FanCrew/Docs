@@ -1284,7 +1284,7 @@
         }
       },
       "Notification": {
-        "type": "object,",
+        "type": "object",
         "properties": {
           "user": {
             "type": "string"
