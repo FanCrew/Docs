@@ -37,4 +37,22 @@
  *       schema:
  *         type: string
  *         default: 5fba05f0f6bac046d456914e
+ * 
+ *     notification:
+ *       in: path
+ *       name: notificationId
+ *       required: true
+ *       description: The notification id
+ *       schema:
+ *         type: string
+ *         default: ''
+ * 
+ *     transaction:
+ *       in: path
+ *       name: transactionId
+ *       required: true
+ *       description: The transaction Id
+ *       schema:
+ *         type: string
+ *         default: 5fc92491c747465482c6b036
  */

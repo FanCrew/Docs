@@ -486,6 +486,181 @@
         }
       }
     },
+    "/notifications": {
+      "get": {
+        "description": "Get Notifications",
+        "summary": "Get Notifications",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "number",
+              "default": 0
+            },
+            "description": "No of docs to skip"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number",
+              "default": 15
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/Notification"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notifications/{notificationId}": {
+      "get": {
+        "description": "Get Notification By Id",
+        "summary": "Get Notification By Id",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/notification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/components/schemas/Notification"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete Notification",
+        "summary": "Delete Notification By Id",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/notification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/notifications/{notificationId}/seen": {
+      "get": {
+        "description": "Make Notification as viewed",
+        "summary": "Make Notification as viewed",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/notification"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "schema": {
+              "$ref": "#/components/schemas/Notification"
+            }
+          }
+        }
+      }
+    },
+    "/notifications/subscribe": {
+      "post": {
+        "description": "Subscribe Notification",
+        "summary": "Subscribe Notification",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "token"
+                ],
+                "properties": {
+                  "token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/notifications/unsubscribe": {
+      "post": {
+        "description": "Unsubscribe Notification",
+        "summary": "Unsubscribe Notification",
+        "tags": [
+          "Notification"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
     "/matches/{matchId}/teams": {
       "get": {
         "tags": [
@@ -640,6 +815,84 @@
       }
     },
     "": {},
+    "/transactions": {
+      "get": {
+        "description": "Get Transactions History",
+        "summary": "Get Transaction History",
+        "tags": [
+          "Transaction"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "number",
+              "default": 0
+            },
+            "description": "Offset to skip"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "number",
+              "default": 20
+            },
+            "description": "Max. transactions to return"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array"
+                },
+                "items": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/{transactionId}": {
+      "get": {
+        "description": "Get Transactions by Id",
+        "summary": "Get Transaction by Id",
+        "tags": [
+          "Transaction"
+        ],
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/transaction"
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/user": {
       "get": {
         "tags": [
@@ -1018,6 +1271,32 @@
           }
         }
       },
+      "type": "object,",
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "seen": {
+          "type": "boolean"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "seenAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
       "Player": {
         "type": "object",
         "properties": {
@@ -1095,6 +1374,39 @@
           }
         }
       },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "type": {
+            "type": "number"
+          },
+          "accountId": {
+            "type": "string"
+          },
+          "orderId": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "failed": {
+            "type": "boolean"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
       "User": {
         "type": "object",
         "properties": {
@@ -1127,24 +1439,6 @@
           },
           "balance": {
             "type": "number"
-          },
-          "notifications": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string"
-              },
-              "content": {
-                "type": "string"
-              },
-              "viewed": {
-                "type": "string"
-              },
-              "createdAt": {
-                "type": "string",
-                "format": "date-time"
-              }
-            }
           },
           "createdAt": {
             "type": "string",
@@ -1565,6 +1859,26 @@
         "schema": {
           "type": "string",
           "default": "5fba05f0f6bac046d456914e"
+        }
+      },
+      "notification": {
+        "in": "path",
+        "name": "notificationId",
+        "required": true,
+        "description": "The notification id",
+        "schema": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "transaction": {
+        "in": "path",
+        "name": "transactionId",
+        "required": true,
+        "description": "The transaction Id",
+        "schema": {
+          "type": "string",
+          "default": "5fc92491c747465482c6b036"
         }
       }
     }
