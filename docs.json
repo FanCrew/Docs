@@ -520,10 +520,14 @@
         "responses": {
           "200": {
             "description": "ok",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/Notification"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Notification"
+                  }
+                }
               }
             }
           }
@@ -550,8 +554,12 @@
         "responses": {
           "200": {
             "description": "ok",
-            "schema": {
-              "$ref": "#/components/schemas/Notification"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notification"
+                }
+              }
             }
           }
         }
@@ -599,8 +607,12 @@
         "responses": {
           "200": {
             "description": "ok",
-            "schema": {
-              "$ref": "#/components/schemas/Notification"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Notification"
+                }
+              }
             }
           }
         }
