@@ -1476,14 +1476,20 @@
               }
             }
           },
-          "staff": {
-            "type": "boolean"
+          "login_meta": {
+            "type": "object",
+            "properties": {
+              "ip": {
+                "type": "string"
+              },
+              "at": {
+                "type": "string",
+                "format": "date-time"
+              }
+            }
           },
-          "manager": {
-            "type": "boolean"
-          },
-          "admin": {
-            "type": "boolean"
+          "perm": {
+            "type": "number"
           }
         }
       }
