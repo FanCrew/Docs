@@ -27,7 +27,7 @@
  *       description: The contest id
  *       schema:
  *         type: string
- *         default: 5fba0cdd23df2448b8bdf369
+ *         default: 5fe6d5f7ff21fb6b3e2094de
  * 
  *     player:
  *       in: path

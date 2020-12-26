@@ -269,6 +269,53 @@
           }
         }
       },
+      "post": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Join Contest",
+        "summary": "Join Contest",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "team_id": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contest"
+                }
+              }
+            }
+          }
+        }
+      },
       "patch": {
         "tags": [
           "Contest"
@@ -304,6 +351,31 @@
                 }
               }
             }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contest"
+        ],
+        "description": "Delete Contest",
+        "summary": "Delete Contest",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/match"
+          },
+          {
+            "$ref": "#/components/parameters/contest"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok"
           }
         }
       }
@@ -1969,7 +2041,7 @@
         "description": "The contest id",
         "schema": {
           "type": "string",
-          "default": "5fba0cdd23df2448b8bdf369"
+          "default": "5fe6d5f7ff21fb6b3e2094de"
         }
       },
       "player": {
