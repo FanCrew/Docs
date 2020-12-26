@@ -1588,6 +1588,98 @@
           }
         }
       },
+      "createContest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "prize_pool": {
+                  "type": "number"
+                },
+                "fee": {
+                  "type": "number"
+                },
+                "max_entries": {
+                  "type": "number"
+                },
+                "max_spots": {
+                  "type": "number"
+                },
+                "min_spots": {
+                  "type": "number"
+                },
+                "distributions": {
+                  "type": "array",
+                  "items": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "rank": {
+                          "type": "string"
+                        },
+                        "prize": {
+                          "type": "number"
+                        },
+                        "isRange": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "updateContest": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "prize_pool": {
+                  "type": "number"
+                },
+                "fee": {
+                  "type": "number"
+                },
+                "max_entries": {
+                  "type": "number"
+                },
+                "max_spots": {
+                  "type": "number"
+                },
+                "min_spots": {
+                  "type": "number"
+                },
+                "distributions": {
+                  "type": "array",
+                  "items": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "rank": {
+                          "type": "string"
+                        },
+                        "prize": {
+                          "type": "number"
+                        },
+                        "isRange": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "addPlayer": {
         "content": {
           "application/json": {
