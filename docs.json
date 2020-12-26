@@ -1354,8 +1354,9 @@
           "match": {
             "type": "string"
           },
-          "contest": {
-            "type": "string"
+          "contests": {
+            "type": "array",
+            "items": "$/components/schemas/Contest"
           },
           "players": {
             "type": "array",
