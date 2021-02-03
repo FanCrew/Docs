@@ -1115,37 +1115,6 @@
         }
       }
     },
-    "/user/sendotp": {},
-    "post": {
-      "tags": [
-        "User"
-      ],
-      "description": "Send otp to phone number",
-      "summary": "Send OTP",
-      "requestBody": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      },
-      "responses": {
-        "200": {
-          "description": "Otp Sent"
-        }
-      }
-    },
     "/user/{id}": {
       "get": {
         "tags": [
