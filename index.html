@@ -39,7 +39,8 @@
               }
             }
           };
-          localStorage.setItem('authorized', JSON.stringify(value));
+         localStorage.setItem('authorized', JSON.stringify(value));
+         ui.preauthorizeApiKey('Bearer', res.obj.token);
         };
         return res;
       }
