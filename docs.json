@@ -1252,7 +1252,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responses/User"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
@@ -1302,7 +1302,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/responses/User"
+                  "$ref": "#/components/schemas/User"
                 }
               }
             }
