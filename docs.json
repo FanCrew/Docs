@@ -1115,6 +1115,37 @@
         }
       }
     },
+    "/user/sendotp": {},
+    "post": {
+      "tags": [
+        "User"
+      ],
+      "description": "Send otp to phone number",
+      "summary": "Send OTP",
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "Otp Sent"
+        }
+      }
+    },
     "/user/{id}": {
       "get": {
         "tags": [
@@ -1184,6 +1215,56 @@
         }
       }
     },
+    "/user/phonenumber": {},
+    "put": {
+      "tags": [
+        "User"
+      ],
+      "description": "Change user email",
+      "summary": "Change Email",
+      "security": [
+        {
+          "Bearer": []
+        }
+      ],
+      "requestBody": {
+        "required": true,
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "otp": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "description": "ok",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/responses/User"
+              }
+            }
+          }
+        },
+        "403": {
+          "description": "Invalid OTP"
+        },
+        "422": {
+          "description": "Email is already taken"
+        }
+      }
+    },
+    "/user/email": {},
     "/user/changepassword": {
       "post": {
         "tags": [
@@ -1526,10 +1607,19 @@
           "phoneNumber": {
             "type": "string"
           },
+          "dob": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
           "image": {
             "type": "string"
           },
           "region": {
+            "type": "string"
+          },
+          "team_name": {
             "type": "string"
           },
           "verified": {
@@ -1805,7 +1895,9 @@
                 "email",
                 "phoneNumber",
                 "region",
-                "password"
+                "password",
+                "dob",
+                "gender"
               ],
               "properties": {
                 "firstName": {
@@ -1830,6 +1922,12 @@
                   "type": "string",
                   "minLength": 8
                 },
+                "dob": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
                 "image": {
                   "type": "string",
                   "format": "binary"
@@ -1846,19 +1944,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "email": {
+                "phoneNumber": {
                   "type": "string"
                 },
-                "username": {
-                  "type": "string"
-                },
-                "password": {
+                "otp": {
                   "type": "string"
                 }
               },
               "required": [
-                "email",
-                "password"
+                "phoneNumber",
+                "otp"
               ]
             }
           }
