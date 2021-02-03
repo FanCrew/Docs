@@ -13,11 +13,11 @@
 
 <body>
   <script>
-    if(!localStorage.getItem('token')) {
-    const pass = window.prompt('Secret');
-    localStorage.setItem('token', pass);
+    if (!localStorage.getItem('token')) {
+      const pass = window.prompt('Secret');
+      localStorage.setItem('token', pass);
     };
-    
+
     const ui = SwaggerUIBundle({
       url: `/${localStorage.getItem('token')}`,
       dom_id: '#root',
@@ -28,7 +28,18 @@
       SwaggerUIBundle.SwaggerUIStandalonePreset
       ],
       responseInterceptor: (res) => {
-      console.log(res);
+        if (res && res.obj && res.obj.token) {
+          const value = {
+            name: 'Bearer',
+            value: res.obj.token,
+            schema: {
+              scheme: 'bearer',
+              type: 'http'
+            }
+          };
+          localStorage.setItem('authorized', JSON.stringify(value));
+        };
+        return res;
       }
     });
     window.ui = ui;
