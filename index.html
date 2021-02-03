@@ -30,11 +30,13 @@
       responseInterceptor: (res) => {
         if (res && res.obj && res.obj.token) {
           const value = {
-            name: 'Bearer',
-            value: res.obj.token,
-            schema: {
-              scheme: 'bearer',
-              type: 'http'
+            Bearer: {
+              name: 'Bearer',
+              value: res.obj.token,
+              schema: {
+                scheme: 'bearer',
+                type: 'http'
+              }
             }
           };
           localStorage.setItem('authorized', JSON.stringify(value));
