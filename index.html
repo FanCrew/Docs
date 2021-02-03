@@ -14,7 +14,7 @@
 <body>
   <script>
     if(!localStorage.getItem('token')) {
-    const pass = window.prompt('Enter the path');
+    const pass = window.prompt('Secret');
     localStorage.setItem('token', pass);
     };
     
@@ -26,7 +26,10 @@
       presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIBundle.SwaggerUIStandalonePreset
-    ]
+      ],
+      responseInterceptor: (res) => {
+      console.log(res);
+      });
     });
     window.ui = ui;
   </script>
