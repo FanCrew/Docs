@@ -1115,34 +1115,35 @@
         }
       }
     },
-    "/user/sendotp": {},
-    ".  post": {
-      "tags": [
-        "User"
-      ],
-      "description": "Send otp to phone number",
-      "summary": "Send OTP",
-      "requestBody": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "email": {
-                  "type": "string"
+    "/user/sendotp": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Send otp to phone number",
+        "summary": "Send OTP",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "responses": {
-        "200": {
-          "description": "Otp Sent"
+        },
+        "responses": {
+          "200": {
+            "description": "Otp Sent"
+          }
         }
       }
     },
@@ -1215,56 +1216,106 @@
         }
       }
     },
-    "/user/phonenumber": {},
-    "put": {
-      "tags": [
-        "User"
-      ],
-      "description": "Change user email",
-      "summary": "Change Email",
-      "security": [
-        {
-          "Bearer": []
-        }
-      ],
-      "requestBody": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "type": "string"
-                },
-                "otp": {
-                  "type": "string"
+    "/user/phonenumber": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Change user phone number",
+        "summary": "Change PhoneNumber",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "string"
+                  }
                 }
               }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/User"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid OTP"
+          },
+          "422": {
+            "description": "PhoneNumber already taken"
+          }
         }
-      },
-      "responses": {
-        "200": {
-          "description": "ok",
+      }
+    },
+    "/user/email": {
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "Change user email",
+        "summary": "Change Email",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/responses/User"
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "otp": {
+                    "type": "string"
+                  }
+                }
               }
             }
           }
         },
-        "403": {
-          "description": "Invalid OTP"
-        },
-        "422": {
-          "description": "Email is already taken"
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/responses/User"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Invalid OTP"
+          },
+          "422": {
+            "description": "Email is already taken"
+          }
         }
       }
     },
-    "/user/email": {},
     "/user/changepassword": {
       "post": {
         "tags": [
