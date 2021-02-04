@@ -1946,7 +1946,6 @@
                 "email",
                 "phoneNumber",
                 "region",
-                "password",
                 "dob",
                 "gender"
               ],
@@ -1968,10 +1967,6 @@
                 },
                 "region": {
                   "type": "string"
-                },
-                "password": {
-                  "type": "string",
-                  "minLength": 8
                 },
                 "dob": {
                   "type": "string"
