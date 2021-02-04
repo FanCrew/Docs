@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/swagger-ui-dist@latest/swagger-ui.css"
+    />
+    <script src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-standalone-preset.js"></script>
+    <script
+      src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-bundle.js"
+      charset="UTF-8"
+    ></script>
+    <title>FanCrew - API</title>
+    <div id="root"></div>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@latest/swagger-ui.css">
-  <script src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-standalone-preset.js"></script>
-  <script src="https://unpkg.com/swagger-ui-dist@latest/swagger-ui-bundle.js" charset="UTF-8"></script>
-  <title>FanCrew - API</title>
-  <div id="root"></div>
-</head>
+  <body>
+    <script>
+      if (!localStorage.getItem('token')) {
+        const pass = window.prompt('Enter the path');
+        localStorage.setItem('token', pass);
+      }
 
-<body>
-  <script>
-    if(!localStorage.getItem('token')) {
-    const pass = window.prompt('Enter the path');
-    localStorage.setItem('token', pass);
-    };
-    
-    const ui = SwaggerUIBundle({
-      url: `/${localStorage.getItem('token')}`,
-      dom_id: '#root',
-      persistAuthorization: true,
-      syntaxHighlight: true,
-      presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIBundle.SwaggerUIStandalonePreset
-    ]
-    });
-    window.ui = ui;
-  </script>
-</body>
-
+      const ui = SwaggerUIBundle({
+        url: `/${localStorage.getItem('token')}`,
+        dom_id: '#root',
+        persistAuthorization: true,
+        syntaxHighlight: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIBundle.SwaggerUIStandalonePreset,
+        ],
+      });
+      window.ui = ui;
+    </script>
+  </body>
 </html>

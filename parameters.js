@@ -2,7 +2,7 @@
  * @swagger
  * components:
  *   parameters:
- * 
+ *
  *     match:
  *       in: path
  *       name: matchId
@@ -11,7 +11,7 @@
  *       schema:
  *         type: string
  *         default: 5fba03763917ea4637e4fe6e
- * 
+ *
  *     team:
  *       in: path
  *       name: teamId
@@ -28,7 +28,7 @@
  *       schema:
  *         type: string
  *         default: 5fe6d5f7ff21fb6b3e2094de
- * 
+ *
  *     player:
  *       in: path
  *       name: playerId
@@ -37,7 +37,7 @@
  *       schema:
  *         type: string
  *         default: 5fba05f0f6bac046d456914e
- * 
+ *
  *     notification:
  *       in: path
  *       name: notificationId
@@ -46,7 +46,7 @@
  *       schema:
  *         type: string
  *         default: ''
- * 
+ *
  *     transaction:
  *       in: path
  *       name: transactionId

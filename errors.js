@@ -4,16 +4,16 @@
  *   responses:
  *     400:
  *       description: Bad Request
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
  *             type: object
  *             properties:
  *               message:
  *                 type: string
- *     401: 
+ *     401:
  *       description: Authorization is required
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
  *             type: object
@@ -22,7 +22,7 @@
  *                 type: string
  *     403:
  *       description: Unauthorised
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
  *             type: object
@@ -31,7 +31,7 @@
  *                 type: string
  *     404:
  *       description: Not Found
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
  *             type: object
@@ -45,14 +45,14 @@
  *           schema:
  *             type: object
  *             properties:
- *               message: 
+ *               message:
  *                 type: string
  *               errors:
  *                  type: object
- * 
+ *
  *     500:
  *       description: Internal Server Error
- *       content: 
+ *       content:
  *         application/json:
  *           schema:
  *             type: object
