@@ -1138,6 +1138,46 @@
         }
       }
     },
+    "/user/validateandsend": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "Validate and send otp to phone number/email",
+        "summary": "Validate and Send OTP",
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Otp Sent"
+          },
+          "422": {
+            "description": "PhoneNumber/Email is already taken"
+          }
+        }
+      }
+    },
     "/user/phonenumber": {
       "put": {
         "tags": [
